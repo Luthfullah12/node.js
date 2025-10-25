@@ -70,9 +70,13 @@ const express = require("express")
 const app = express()
 const db = require("./src/config/DB")
  const userRouter = require("./src/router/Userrout")
+ const productRouter = require("./src/router/productrout")
  const bodyparser = require("body-parser")
+ const cors = require("cors")
 app.use(bodyparser.json())
+app.use(cors())
  app.use("/user",userRouter)
+ app.use("/product",productRouter)
 
 db.on("open",()=>{
     app.listen(4000,()=>{
